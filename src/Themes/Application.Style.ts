@@ -1,8 +1,8 @@
 import colors from './Colors';
-import {Dimensions, Platform} from 'react-native';
+import {Dimensions, Platform, StyleSheet} from 'react-native';
 import {fontFamily, fontSize} from '../const';
 
-const ApplicationStyle = {
+const ApplicationStyle = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.bgRoot,
@@ -55,7 +55,7 @@ const ApplicationStyle = {
     height: 0.5,
     alignSelf: 'stretch',
   },
-};
+});
 
 export default ApplicationStyle;
 

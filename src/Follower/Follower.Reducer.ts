@@ -1,8 +1,9 @@
 import {GET_FOLLOWER_FAIL, GET_FOLLOWER_REQUEST, GET_FOLLOWER_SUCCESS} from './Follower.Action';
+import {Action, State} from '../reducers';
 
-const initialState = {fetching: false, data: null, err: null};
+const initialState: State = {fetching: false, data: null, err: null};
 
-export const getFollower = (state = initialState, action) => {
+export const getFollower = (state: State = initialState, action: Action) => {
   switch (action.type) {
     case GET_FOLLOWER_REQUEST:
       return {

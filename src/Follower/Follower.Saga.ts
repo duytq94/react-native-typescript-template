@@ -2,12 +2,13 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import {getFollower} from '../api';
 import {GET_FOLLOWER_REQUEST, getFollowerFail, getFollowerSuccess} from './Follower.Action';
 import {sendNetworkFail} from '../actions';
+import {Action} from '../reducers';
 
 export function* watchGetFollower() {
   yield takeLatest(GET_FOLLOWER_REQUEST, handleGetFollower);
 }
 
-function* handleGetFollower(action) {
+function* handleGetFollower(action: Action) {
   const response = yield call(getFollower, action.payload);
   if (response.ok) {
     yield put(getFollowerSuccess(response.data));
