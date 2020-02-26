@@ -10,7 +10,13 @@ import DetailProfileScreen from '../DetailProfile/DetailProfile.Screen';
 import DetailFollowerScreen from '../DetailFollower/DetailFollower.Screen';
 import {DrawerNavigatorScreen} from '../DrawerNavigator/DrawerNavigator.Screen';
 
-const Stack = createStackNavigator();
+export type StackParamList = {
+  DetailProfileScreen: undefined;
+  DetailFollowerScreen: undefined;
+  DrawerNavigatorScreen: undefined;
+};
+
+const Stack = createStackNavigator<StackParamList>();
 
 interface Props {}
 
@@ -85,8 +91,13 @@ class RootContainerScreen extends Component<Props, State> {
     return (
       <View style={styles.mainContainer}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Drawer" headerMode={'none'}>
-            <Stack.Screen name="Drawer" component={DrawerNavigatorScreen} />
+          <Stack.Navigator
+            initialRouteName="DrawerNavigatorScreen"
+            headerMode={'none'}>
+            <Stack.Screen
+              name="DrawerNavigatorScreen"
+              component={DrawerNavigatorScreen}
+            />
             <Stack.Screen
               name="DetailProfileScreen"
               component={DetailProfileScreen}

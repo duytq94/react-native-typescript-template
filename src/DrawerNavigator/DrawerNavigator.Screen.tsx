@@ -5,7 +5,12 @@ import React, {Component} from 'react';
 import colors from '../Themes/Colors';
 import styles from './DrawerNavigator.Style';
 
-const Drawer = createDrawerNavigator();
+export type DrawerParamList = {
+  ProfileScreen: undefined;
+  FollowerScreen: undefined;
+};
+
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
 export class DrawerNavigatorScreen extends Component {
   render() {

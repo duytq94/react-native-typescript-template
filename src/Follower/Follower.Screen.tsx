@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {ActivityIndicator, FlatList, Image, StatusBar, Text, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './Follower.Style';
 import {getFollowerRequest} from './Follower.Action';
@@ -8,10 +15,23 @@ import colors from '../Themes/Colors';
 import {barStyle} from '../const';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import GeneralButton from '../Components/GeneralButton';
+import LoadingView from '../Components/LoadingView';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {StackParamList} from '../Root/RootContainer.Screen';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {DrawerParamList} from '../DrawerNavigator/DrawerNavigator.Screen';
+import {CompositeNavigationProp} from '@react-navigation/native';
+
+interface ItemProp {
+  item: any;
+}
 
 interface Props {
   onCallApi: any;
-  navigation: any;
+  navigation: CompositeNavigationProp<
+    StackNavigationProp<StackParamList>,
+    DrawerNavigationProp<DrawerParamList>
+  >;
 }
 
 interface State {
@@ -63,11 +83,7 @@ class FollowerScreen extends Component<Props, State> {
 
         {this.renderDataView()}
 
-        {this.state.getFollower.fetching ? (
-          <View style={styles.viewLoading}>
-            <ActivityIndicator />
-          </View>
-        ) : null}
+        {this.state.getFollower.fetching ? <LoadingView /> : null}
       </View>
     );
   }
@@ -117,7 +133,7 @@ class FollowerScreen extends Component<Props, State> {
     }
   };
 
-  renderItem = ({item}) => {
+  renderItem = ({item}: ItemProp) => {
     return (
       <View style={styles.viewWrapItem}>
         <Image style={styles.avatar} source={{uri: item.avatar_url}} />

@@ -5,9 +5,11 @@ import styles from './DetailFollower.Style';
 import colors from '../Themes/Colors';
 import {barStyle} from '../const';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {StackParamList} from '../Root/RootContainer.Screen';
 
 interface Props {
-  navigation: any;
+  navigation: StackNavigationProp<StackParamList>;
 }
 
 class DetailFollowerScreen extends Component<Props> {

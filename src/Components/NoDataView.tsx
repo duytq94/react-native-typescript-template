@@ -8,7 +8,7 @@ interface Props {
   onRetryPress: () => any;
 }
 
-const NoDataView: FC<Props> = (props: any) => {
+const NoDataView: FC<Props> = (props: Props) => {
   return (
     <View style={styles.viewNoData}>
       <MaterialCommunityIcons

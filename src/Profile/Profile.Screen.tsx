@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ActivityIndicator, Image, StatusBar, Text, TouchableOpacity, View} from 'react-native';
+import {Image, StatusBar, Text, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './Profile.Style';
 import {getProfileRequest} from './Profile.Action';
@@ -8,10 +8,19 @@ import colors from '../Themes/Colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {barStyle} from '../const';
 import GeneralButton from '../Components/GeneralButton';
+import LoadingView from '../Components/LoadingView';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {StackParamList} from 'src/Root/RootContainer.Screen';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {DrawerParamList} from 'src/DrawerNavigator/DrawerNavigator.Screen';
 
 interface Props {
   onCallApi: any;
-  navigation: any;
+  navigation: CompositeNavigationProp<
+    StackNavigationProp<StackParamList>,
+    DrawerNavigationProp<DrawerParamList>
+  >;
 }
 
 interface State {
@@ -63,11 +72,7 @@ class ProfileScreen extends Component<Props, State> {
 
         {this.renderDataView()}
 
-        {this.state.getProfile.fetching ? (
-          <View style={styles.viewLoading}>
-            <ActivityIndicator />
-          </View>
-        ) : null}
+        {this.state.getProfile.fetching ? <LoadingView /> : null}
       </View>
     );
   }
