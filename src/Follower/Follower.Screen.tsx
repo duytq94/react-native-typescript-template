@@ -18,7 +18,7 @@ interface State {
 }
 
 class FollowerScreen extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       getFollower: {fetching: false, data: null, err: null},

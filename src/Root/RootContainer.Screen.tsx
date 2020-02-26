@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styles from './RootContainer.Style';
-import {Keyboard, Platform, View} from 'react-native';
+import {EmitterSubscription, Keyboard, Platform, View} from 'react-native';
 import {clearNetworkFail} from '../actions';
 import Toast from 'react-native-simple-toast';
 import {NavigationContainer} from '@react-navigation/native';
@@ -21,8 +21,8 @@ interface State {
 }
 
 class RootContainerScreen extends Component<Props, State> {
-  keyboardDidShowListener: any;
-  keyboardDidHideListener: any;
+  keyboardDidShowListener!: EmitterSubscription;
+  keyboardDidHideListener!: EmitterSubscription;
 
   constructor(props: Props) {
     super(props);
