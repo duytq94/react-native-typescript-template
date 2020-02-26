@@ -5,7 +5,7 @@ import {fontFamily, fontSize} from '../const';
 import colors from '../Themes/Colors';
 
 interface Props {
-  onRetryPress: any;
+  onRetryPress: () => any;
 }
 
 const NoDataView: FC<Props> = (props: any) => {

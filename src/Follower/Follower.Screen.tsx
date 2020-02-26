@@ -7,6 +7,7 @@ import NoDataView from '../Components/NoDataView';
 import colors from '../Themes/Colors';
 import {barStyle} from '../const';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import GeneralButton from '../Components/GeneralButton';
 
 interface Props {
   onCallApi: any;
@@ -46,13 +47,19 @@ class FollowerScreen extends Component<Props, State> {
       <View style={styles.mainContainer}>
         {this.renderToolbar()}
 
-        <TouchableOpacity style={styles.btnGetData} onPress={this.getFollower}>
-          <Text style={styles.textGetData}>Get follower</Text>
-        </TouchableOpacity>
+        <GeneralButton
+          styleBtn={styles.btnGetData}
+          styleText={styles.textGetData}
+          onPress={this.getFollower}
+          title={'Get follower'}
+        />
 
-        <TouchableOpacity style={styles.btnGetData} onPress={this.goDetail}>
-          <Text style={styles.textGetData}>Go detail</Text>
-        </TouchableOpacity>
+        <GeneralButton
+          styleBtn={styles.btnGetData}
+          styleText={styles.textGetData}
+          onPress={this.goDetail}
+          title={'Go detail'}
+        />
 
         {this.renderDataView()}
 

@@ -7,6 +7,7 @@ import NoDataView from '../Components/NoDataView';
 import colors from '../Themes/Colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {barStyle} from '../const';
+import GeneralButton from '../Components/GeneralButton';
 
 interface Props {
   onCallApi: any;
@@ -46,15 +47,19 @@ class ProfileScreen extends Component<Props, State> {
       <View style={styles.mainContainer}>
         {this.renderToolbar()}
 
-        <TouchableOpacity
-          style={styles.btnGetData}
-          onPress={this.getUserProfile}>
-          <Text style={styles.textGetData}>Get profile</Text>
-        </TouchableOpacity>
+        <GeneralButton
+          styleBtn={styles.btnGetData}
+          styleText={styles.textGetData}
+          onPress={this.getUserProfile}
+          title={'Get profile'}
+        />
 
-        <TouchableOpacity style={styles.btnGetData} onPress={this.goDetail}>
-          <Text style={styles.textGetData}>Go detail</Text>
-        </TouchableOpacity>
+        <GeneralButton
+          styleBtn={styles.btnGetData}
+          styleText={styles.textGetData}
+          onPress={this.goDetail}
+          title={'Go detail'}
+        />
 
         {this.renderDataView()}
 
