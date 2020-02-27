@@ -21,13 +21,14 @@ import {StackParamList} from '../Root/RootContainer.Screen';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerParamList} from '../DrawerNavigator/DrawerNavigator.Screen';
 import {CompositeNavigationProp} from '@react-navigation/native';
+import {Action} from '../reducers';
 
 interface ItemProp {
   item: any;
 }
 
 interface Props {
-  onCallApi: any;
+  onCallApi: (action: Action) => {};
   navigation: CompositeNavigationProp<
     StackNavigationProp<StackParamList>,
     DrawerNavigationProp<DrawerParamList>
