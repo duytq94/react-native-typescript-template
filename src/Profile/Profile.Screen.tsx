@@ -10,7 +10,7 @@ import {barStyle} from '../const';
 import GeneralButton from '../Components/GeneralButton';
 import LoadingView from '../Components/LoadingView';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {StackParamList} from 'src/Root/RootContainer.Screen';
+import {StackParamList} from 'src/Navigator/AppContainer';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerParamList} from 'src/DrawerNavigator/DrawerNavigator.Screen';

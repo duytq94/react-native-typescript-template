@@ -17,7 +17,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import GeneralButton from '../Components/GeneralButton';
 import LoadingView from '../Components/LoadingView';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {StackParamList} from '../Root/RootContainer.Screen';
+import {StackParamList} from '../Navigator/AppContainer';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerParamList} from '../DrawerNavigator/DrawerNavigator.Screen';
 import {CompositeNavigationProp} from '@react-navigation/native';

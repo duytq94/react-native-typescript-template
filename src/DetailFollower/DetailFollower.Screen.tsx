@@ -6,7 +6,7 @@ import colors from '../Themes/Colors';
 import {barStyle} from '../const';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {StackParamList} from '../Root/RootContainer.Screen';
+import {StackParamList} from '../Navigator/AppContainer';
 
 interface Props {
   navigation: StackNavigationProp<StackParamList>;

@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/iCielVAGRoundedNext-Bold.otf",
+      "sha1": "f3ee92001b65aeab4813a904f9fc83983370bae4"
+    },
+    {
+      "path": "assets/fonts/iCielVAGRoundedNext-DemiBold.otf",
+      "sha1": "b980fb6b873981f81cd51e1647a9b2bdb025a810"
+    },
+    {
+      "path": "assets/fonts/iCielVAGRoundedNext-Light.otf",
+      "sha1": "8d918a7bb06f0b69838eae9e8e54ba5256443ee0"
+    },
+    {
+      "path": "assets/fonts/iCielVAGRoundedNext-LightItalic.otf",
+      "sha1": "20824e26ad220f9d715497c00910f62e8ad257c9"
+    },
+    {
+      "path": "assets/fonts/iCielVAGRoundedNext-Medium.otf",
+      "sha1": "43cb923d6451aea4775a79a6f82bf8b2f55f8294"
+    },
+    {
+      "path": "assets/fonts/iCielVAGRoundedNext-Regular.otf",
+      "sha1": "7e915796f31cd418fe98b9f248361448143c59e4"
+    }
+  ]
+}
