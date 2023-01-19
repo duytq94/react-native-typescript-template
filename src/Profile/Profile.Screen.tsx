@@ -7,7 +7,7 @@ import NoDataView from '../Components/NoDataView';
 import colors from '../Themes/Colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {barStyle} from '../const';
-import GeneralButton from '../Components/GeneralButton';
+import CommonBtn from '../Components/CommonBtn';
 import LoadingView from '../Components/LoadingView';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParamList} from 'src/Navigator/AppContainer';
@@ -58,14 +58,14 @@ class ProfileScreen extends Component<Props, State> {
       <View style={styles.mainContainer}>
         {this.renderToolbar()}
 
-        <GeneralButton
+        <CommonBtn
           styleBtn={styles.btnGetData}
           styleText={styles.textGetData}
           onPress={this.getUserProfile}
           title={'Get profile'}
         />
 
-        <GeneralButton
+        <CommonBtn
           styleBtn={styles.btnGetData}
           styleText={styles.textGetData}
           onPress={this.goDetail}

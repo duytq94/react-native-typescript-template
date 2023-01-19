@@ -14,12 +14,7 @@ interface Props {
   title: String;
 }
 
-const GeneralButton: FC<Props> = ({
-  onPress,
-  styleBtn,
-  styleText,
-  title,
-}: Props) => {
+const CommonBtn: FC<Props> = ({onPress, styleBtn, styleText, title}: Props) => {
   return (
     <TouchableOpacity style={styleBtn} onPress={onPress}>
       <Text style={styleText}>{title}</Text>
@@ -27,4 +22,4 @@ const GeneralButton: FC<Props> = ({
   );
 };
 
-export default GeneralButton;
+export default CommonBtn;
