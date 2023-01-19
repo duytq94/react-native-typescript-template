@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ListRenderItem,
 } from 'react-native';
 import {connect} from 'react-redux';
 import styles from './Follower.Style';
@@ -16,21 +17,18 @@ import {barStyle} from '../const';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import GeneralButton from '../Components/GeneralButton';
 import LoadingView from '../Components/LoadingView';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParamList} from '../Navigator/AppContainer';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerParamList} from '../DrawerNavigator/DrawerNavigator.Screen';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {Action} from '../reducers';
-
-interface ItemProp {
-  item: any;
-}
+import {GithubFollowerResponse} from './Follower.Model';
 
 interface Props {
   onCallApi: (action: Action) => {};
   navigation: CompositeNavigationProp<
-    StackNavigationProp<StackParamList>,
+    NativeStackNavigationProp<StackParamList>,
     DrawerNavigationProp<DrawerParamList>
   >;
 }
@@ -115,7 +113,8 @@ class FollowerScreen extends Component<Props, State> {
   };
 
   renderDataView = () => {
-    if (this.state.getFollower.data) {
+    const arr: Array<GithubFollowerResponse> = this.state.getFollower.data;
+    if (arr) {
       return (
         <FlatList
           style={{flex: 1, paddingLeft: 10, paddingRight: 10}}
@@ -134,7 +133,7 @@ class FollowerScreen extends Component<Props, State> {
     }
   };
 
-  renderItem = ({item}: ItemProp) => {
+  renderItem: ListRenderItem<GithubFollowerResponse> = ({item}) => {
     return (
       <View style={styles.viewWrapItem}>
         <Image style={styles.avatar} source={{uri: item.avatar_url}} />

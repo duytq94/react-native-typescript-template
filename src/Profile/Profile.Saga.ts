@@ -7,7 +7,7 @@ import {
 import {getProfile} from '../api';
 import {sendNetworkFail} from '../actions';
 import {Action} from '../reducers';
-import GithubProfile from './Profile.Model';
+import {GithubProfileResponse} from './Profile.Model';
 
 export function* watchGetProfile() {
   yield takeLatest(GET_PROFILE_REQUEST, handleGetProfile);
@@ -16,7 +16,7 @@ export function* watchGetProfile() {
 function* handleGetProfile(action: Action) {
   const response = yield call(getProfile, action.payload);
   if (response.ok) {
-    const githubProfile = response.data as GithubProfile;
+    const githubProfile = GithubProfileResponse.fromJSON(response.data);
     yield put(getProfileSuccess(githubProfile));
   } else {
     if (

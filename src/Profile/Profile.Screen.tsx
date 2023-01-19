@@ -15,7 +15,7 @@ import {CompositeNavigationProp} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerParamList} from 'src/DrawerNavigator/DrawerNavigator.Screen';
 import {Action} from '../reducers';
-import GithubProfile from './Profile.Model';
+import {GithubProfileResponse} from './Profile.Model';
 
 interface Props {
   onCallApi: (action: Action) => {};
@@ -105,7 +105,7 @@ class ProfileScreen extends Component<Props, State> {
   };
 
   renderDataView = () => {
-    const githubProfile: GithubProfile = this.state.getProfile.data;
+    const githubProfile: GithubProfileResponse = this.state.getProfile.data;
     if (githubProfile) {
       return (
         <View style={styles.body}>
@@ -134,7 +134,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onCallApi: (object) => dispatch(object),
+    onCallApi: object => dispatch(object),
   };
 };
 
