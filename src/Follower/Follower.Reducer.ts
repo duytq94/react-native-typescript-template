@@ -1,4 +1,8 @@
-import {GET_FOLLOWER_FAIL, GET_FOLLOWER_REQUEST, GET_FOLLOWER_SUCCESS} from './Follower.Action';
+import {
+  GET_FOLLOWER_FAIL,
+  GET_FOLLOWER_REQUEST,
+  GET_FOLLOWER_SUCCESS,
+} from './Follower.Action';
 import {Action, State} from '../reducers';
 
 const initialState: State = {fetching: false, data: null, err: null};

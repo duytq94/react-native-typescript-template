@@ -7,19 +7,20 @@ import NoDataView from '../Components/NoDataView';
 import colors from '../Themes/Colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {barStyle} from '../const';
-import GeneralButton from '../Components/GeneralButton';
+import CommonBtn from '../Components/CommonBtn';
 import LoadingView from '../Components/LoadingView';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {StackParamList} from 'src/Root/RootContainer.Screen';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {StackParamList} from 'src/Navigator/AppContainer';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerParamList} from 'src/DrawerNavigator/DrawerNavigator.Screen';
 import {Action} from '../reducers';
+import {GithubProfileResponse} from './Profile.Model';
 
 interface Props {
-  onCallApi: (action: Action) => {};
+  callApi: (action: Action) => {};
   navigation: CompositeNavigationProp<
-    StackNavigationProp<StackParamList>,
+    NativeStackNavigationProp<StackParamList>,
     DrawerNavigationProp<DrawerParamList>
   >;
 }
@@ -41,7 +42,7 @@ class ProfileScreen extends Component<Props, State> {
   }
 
   getUserProfile = () => {
-    this.props.onCallApi(getProfileRequest('duytq94'));
+    this.props.callApi(getProfileRequest('duytq94'));
   };
 
   goDetail = () => {
@@ -57,14 +58,14 @@ class ProfileScreen extends Component<Props, State> {
       <View style={styles.mainContainer}>
         {this.renderToolbar()}
 
-        <GeneralButton
+        <CommonBtn
           styleBtn={styles.btnGetData}
           styleText={styles.textGetData}
           onPress={this.getUserProfile}
           title={'Get profile'}
         />
 
-        <GeneralButton
+        <CommonBtn
           styleBtn={styles.btnGetData}
           styleText={styles.textGetData}
           onPress={this.goDetail}
@@ -104,20 +105,17 @@ class ProfileScreen extends Component<Props, State> {
   };
 
   renderDataView = () => {
-    if (this.state.getProfile.data) {
+    const githubProfile: GithubProfileResponse = this.state.getProfile.data;
+    if (githubProfile) {
       return (
         <View style={styles.body}>
           <Image
             style={styles.avatar}
-            source={{uri: this.state.getProfile.data.avatar_url}}
+            source={{uri: githubProfile.avatar_url}}
           />
-          <Text style={styles.textData}>
-            {this.state.getProfile.data.login}
-          </Text>
-          <Text style={styles.textData}>{this.state.getProfile.data.name}</Text>
-          <Text style={styles.textData}>
-            {this.state.getProfile.data.location}
-          </Text>
+          <Text style={styles.textData}>{githubProfile.login}</Text>
+          <Text style={styles.textData}>{githubProfile.name}</Text>
+          <Text style={styles.textData}>{githubProfile.location}</Text>
         </View>
       );
     } else if (this.state.getProfile.err) {
@@ -136,11 +134,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onCallApi: object => dispatch(object),
+    callApi: object => dispatch(object),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
