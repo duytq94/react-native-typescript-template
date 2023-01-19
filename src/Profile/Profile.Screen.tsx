@@ -18,7 +18,7 @@ import {Action} from '../reducers';
 import {GithubProfileResponse} from './Profile.Model';
 
 interface Props {
-  onCallApi: (action: Action) => {};
+  callApi: (action: Action) => {};
   navigation: CompositeNavigationProp<
     NativeStackNavigationProp<StackParamList>,
     DrawerNavigationProp<DrawerParamList>
@@ -42,7 +42,7 @@ class ProfileScreen extends Component<Props, State> {
   }
 
   getUserProfile = () => {
-    this.props.onCallApi(getProfileRequest('duytq94'));
+    this.props.callApi(getProfileRequest('duytq94'));
   };
 
   goDetail = () => {
@@ -134,7 +134,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onCallApi: object => dispatch(object),
+    callApi: object => dispatch(object),
   };
 };
 

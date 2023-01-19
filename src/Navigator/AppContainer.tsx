@@ -53,7 +53,7 @@ class AppContainer extends Component<Props, State> {
           });
           break;
       }
-      nextProps.onCallApi(clearNetworkFail());
+      nextProps.callApi(clearNetworkFail());
     }
     return null;
   }
@@ -82,7 +82,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onCallApi: (object: object) => dispatch(object),
+    callApi: (object: object) => dispatch(object),
   };
 };
 
