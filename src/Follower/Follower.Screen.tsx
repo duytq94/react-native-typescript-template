@@ -160,7 +160,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(FollowerScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(FollowerScreen);

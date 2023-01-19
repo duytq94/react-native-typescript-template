@@ -9,17 +9,18 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {barStyle} from '../const';
 import GeneralButton from '../Components/GeneralButton';
 import LoadingView from '../Components/LoadingView';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParamList} from 'src/Navigator/AppContainer';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerParamList} from 'src/DrawerNavigator/DrawerNavigator.Screen';
 import {Action} from '../reducers';
+import GithubProfile from './Profile.Model';
 
 interface Props {
   onCallApi: (action: Action) => {};
   navigation: CompositeNavigationProp<
-    StackNavigationProp<StackParamList>,
+    NativeStackNavigationProp<StackParamList>,
     DrawerNavigationProp<DrawerParamList>
   >;
 }
@@ -104,20 +105,17 @@ class ProfileScreen extends Component<Props, State> {
   };
 
   renderDataView = () => {
-    if (this.state.getProfile.data) {
+    const githubProfile: GithubProfile = this.state.getProfile.data;
+    if (githubProfile) {
       return (
         <View style={styles.body}>
           <Image
             style={styles.avatar}
-            source={{uri: this.state.getProfile.data.avatar_url}}
+            source={{uri: githubProfile.avatar_url}}
           />
-          <Text style={styles.textData}>
-            {this.state.getProfile.data.login}
-          </Text>
-          <Text style={styles.textData}>{this.state.getProfile.data.name}</Text>
-          <Text style={styles.textData}>
-            {this.state.getProfile.data.location}
-          </Text>
+          <Text style={styles.textData}>{githubProfile.login}</Text>
+          <Text style={styles.textData}>{githubProfile.name}</Text>
+          <Text style={styles.textData}>{githubProfile.location}</Text>
         </View>
       );
     } else if (this.state.getProfile.err) {
@@ -136,11 +134,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onCallApi: object => dispatch(object),
+    onCallApi: (object) => dispatch(object),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

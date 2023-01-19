@@ -1,5 +1,11 @@
 import React, {FC} from 'react';
-import {StyleProp, Text, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
+import {
+  StyleProp,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 
 interface Props {
   onPress: () => any;
@@ -8,7 +14,12 @@ interface Props {
   title: String;
 }
 
-const GeneralButton: FC<Props> = ({onPress, styleBtn, styleText, title}: Props) => {
+const GeneralButton: FC<Props> = ({
+  onPress,
+  styleBtn,
+  styleText,
+  title,
+}: Props) => {
   return (
     <TouchableOpacity style={styleBtn} onPress={onPress}>
       <Text style={styleText}>{title}</Text>

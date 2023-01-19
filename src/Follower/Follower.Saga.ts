@@ -1,6 +1,10 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import {getFollower} from '../api';
-import {GET_FOLLOWER_REQUEST, getFollowerFail, getFollowerSuccess} from './Follower.Action';
+import {
+  GET_FOLLOWER_REQUEST,
+  getFollowerFail,
+  getFollowerSuccess,
+} from './Follower.Action';
 import {sendNetworkFail} from '../actions';
 import {Action} from '../reducers';
 
@@ -13,7 +17,11 @@ function* handleGetFollower(action: Action) {
   if (response.ok) {
     yield put(getFollowerSuccess(response.data));
   } else {
-    if (response.problem !== 'NETWORK_ERROR' && response.problem !== 'TIMEOUT_ERROR' && response.problem !== 'CONNECTION_ERROR') {
+    if (
+      response.problem !== 'NETWORK_ERROR' &&
+      response.problem !== 'TIMEOUT_ERROR' &&
+      response.problem !== 'CONNECTION_ERROR'
+    ) {
       yield put(getFollowerFail(response.problem));
     } else {
       yield put(sendNetworkFail(response.problem));

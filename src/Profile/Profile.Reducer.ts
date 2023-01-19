@@ -1,4 +1,8 @@
-import {GET_PROFILE_FAIL, GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS} from './Profile.Action';
+import {
+  GET_PROFILE_FAIL,
+  GET_PROFILE_REQUEST,
+  GET_PROFILE_SUCCESS,
+} from './Profile.Action';
 import {Action, State} from '../reducers';
 
 const initialState: State = {fetching: false, data: null, err: null};
