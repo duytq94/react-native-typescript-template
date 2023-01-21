@@ -17,14 +17,14 @@ export type StackParamList = {
 interface Props {}
 
 interface State {
-  isShowNetworkErr: boolean;
+  sendNetworkFail: object;
 }
 
 class AppContainer extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      isShowNetworkErr: false,
+      sendNetworkFail: {},
     };
   }
 
